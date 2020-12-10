@@ -10,7 +10,7 @@ namespace Vista
 {
     public partial class crearCita1 : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        public void Page_Load(object sender, EventArgs e)
         {
             reserva.Visible = false;
         }
@@ -47,7 +47,7 @@ namespace Vista
             }
         }
 
-        protected void bntFiltrar_Click(object sender, EventArgs e)
+        public void bntFiltrar_Click(object sender, EventArgs e)
         {
             List<Cita> reservado = new List<Cita>();
             ClsCita cita = new ClsCita();
@@ -72,7 +72,7 @@ namespace Vista
             reserva.Visible = true;
         }
 
-        protected void DropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        public void DropDownList_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
