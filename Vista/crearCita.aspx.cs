@@ -20,7 +20,7 @@ namespace Vista
             return ClsEspecialista.consultarEspecialistass(int.Parse(Session["idEspecialista"].ToString()));
         }
 
-        protected void btnRegistrarCita_Click(object sender, EventArgs e)
+        public void btnRegistrarCita_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
             ClsCita clsCita = new ClsCita();
@@ -34,12 +34,12 @@ namespace Vista
             Page.RegisterStartupScript("script", "<script languaje=JavaScript>alert('" + mensaje + "');location.href='dashboard.aspx';</script>");
         }
 
-        protected void Calendar_SelectionChanged(object sender, EventArgs e)
+        public void Calendar_SelectionChanged(object sender, EventArgs e)
         {
             txtFecha.Text = "Fecha seleccionada: " + Calendar.SelectedDate.ToShortDateString();
         }
 
-        protected void Calendar_DayRender(object sender, DayRenderEventArgs e)
+        public void Calendar_DayRender(object sender, DayRenderEventArgs e)
         {
             if (e.Day.IsOtherMonth)
             {
