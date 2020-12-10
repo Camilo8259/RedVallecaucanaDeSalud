@@ -16,14 +16,14 @@
                         <% foreach (var e in infoEspecialista())
                             { %>
                         <div class="card-body">
-                            <h5 class="card-title"><% Response.Write(e.especialidad.especialidad1); %></h5>
+                            <h5 class="card-title"><% Response.Write(e.Especialidad.especialidad1); %></h5>
                         </div>
                         <ul class="list-group list-group-flush">
                             <li class="list-group-item">Nombre: <%Response.Write(e.nombre);%></li>
-                            <li class="list-group-item">Ente: <%Response.Write(e.ente_salud.razon_social); %></li>
+                            <li class="list-group-item">Ente: <%Response.Write(e.Ente_salud.razon_social); %></li>
                             <li class="list-group-item">Correo electronico: <%Response.Write(e.correo);%></li>
                             <li class="list-group-item">Celular: <%Response.Write(e.celular); %></li>
-                            <li class="list-group-item">Ciudad: <%Response.Write(e.ciudad.ciudad1); %></li>
+                            <li class="list-group-item">Ciudad: <%Response.Write(e.Ciudad.ciudad1); %></li>
                             <li class="list-group-item">Numero de licencia: <%Response.Write(e.num_licencia); %></li>
                             <li class="list-group-item">Fecha de expedición: <%Response.Write(e.fech_expedicion_licen.ToShortDateString()); %></li>
                         </ul>

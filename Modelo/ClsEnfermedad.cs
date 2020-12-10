@@ -24,8 +24,8 @@ namespace Modelo
         public Object ConsultarEnfermedad(string enfermedad, string sintoma)
         {
             ORMDataContext BD = new ORMDataContext();
-            return from e in BD.VistaEnfermedad
-                   where e.nombre == enfermedad || e.sintoma == sintoma
+            return from e in BD.Enfermedad
+                   where e.nombre == enfermedad || e.descripcion == sintoma
                    select e;
         }
     }

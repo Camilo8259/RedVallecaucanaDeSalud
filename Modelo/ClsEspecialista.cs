@@ -25,8 +25,8 @@ namespace Modelo
         public Object ConsultarEspecialista(string especialidad, string ciudad)
         {
             ORMDataContext BD = new ORMDataContext();
-            return from e in BD.VistaEspecialista
-                   where e.especialidad == especialidad && e.ciudad == ciudad
+            return from e in BD.Especialidad
+                   where e.especialidad1 == especialidad
                    select e;
         }
 
