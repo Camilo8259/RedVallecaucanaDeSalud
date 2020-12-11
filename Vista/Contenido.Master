@@ -161,7 +161,7 @@
                                     </span>
                                 </a>
                                 <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                <div class="dropdown-menu dropdown-menu-right"
                                     aria-labelledby="userDropdown">
                                     <center>
                                         <a class="btn m-0 p-0" href="login.aspx">SALIR</a>
