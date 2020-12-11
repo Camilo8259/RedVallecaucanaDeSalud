@@ -30,6 +30,20 @@ namespace Modelo
                     select e).ToList();
         }
 
+        public Object EnteAsociado()
+        {
+            ORMDataContext BD = new ORMDataContext();
+            return from e in BD.Ente_salud
+                    
+                    select new
+                    {
+                        id_ente = e.id_ente,
+                        datos = e.razon_social
+                    } ;
+        }
+
+
+
         public Object ConsultarEnte()
         {
             ORMDataContext BD = new ORMDataContext();
@@ -41,6 +55,24 @@ namespace Modelo
                        nit = e.nit,
                        razon = e.razon_social,
                        representante = e.representante,
+                       ciudad = e.Ciudad.ciudad1,
+                       capacidad = e.capacidad_pacientes,
+                   };
+        }
+
+        public Object ConsultarEnteAsociado(int id)
+        {
+            ORMDataContext BD = new ORMDataContext();
+            return from e in BD.Ente_salud
+                   where e.id_persona == id
+                   select new
+                   {
+                       nit = e.nit,
+                       razon = e.razon_social,
+                       representante = e.representante,
+                       correo = e.correo,
+                       telefono = e.telefono,
+                       sitio = e.sitio_web,
                        ciudad = e.Ciudad.ciudad1,
                        capacidad = e.capacidad_pacientes,
                    };
@@ -60,6 +92,12 @@ namespace Modelo
         {
             ORMDataContext BD = new ORMDataContext();
             return (from e in BD.Ente_salud select e).Count();
+        }
+
+        static public int CountEsteAsociado(int id)
+        {
+            ORMDataContext BD = new ORMDataContext();
+            return (from e in BD.Ente_salud where e.id_persona == id select e).Count();
         }
     }
 }

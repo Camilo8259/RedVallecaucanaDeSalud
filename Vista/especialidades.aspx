@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contenido.Master" AutoEventWireup="true" CodeBehind="especialidades.aspx.cs" Inherits="Vista.especialidades" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
     <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
     <!-- css bootstrap 4 datatable -->
@@ -18,7 +17,7 @@
     <h4 style="margin: 10px 15px 0px 0px"><i class="fas fa-user-md mr-2"></i>Consultar especialistas</h4>
     <hr>
     <div class="col-12 table-responsive-md mt-3 mb-3">
-        <asp:GridView Width="100%" CellSpacing="0" class="table table-bordered table-hover tabla" ID="gdgGrid" runat="server" AutoGenerateColumns="False" OnRowCommand="gdgGrid_RowCommand">
+        <asp:GridView Width="100%" CellSpacing="0" class="table table-bordered table-hover tabla" ID="gdgGrid" runat="server" AutoGenerateColumns="False" OnRowDataBound="gdgGrid_RowDataBound" OnRowCommand="gdgGrid_RowCommand">
             <Columns>
                 <asp:BoundField DataField="id" HeaderText="Id" />
                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
@@ -30,10 +29,13 @@
 
                 <asp:TemplateField HeaderText="Agendar cita">
                     <ItemTemplate>
-                        <asp:ImageButton ID="imgSelec" CommandName="Seleccionar" ImageUrl="~/img/calendar.png" Width="25px" runat="server" />
+                        <center>
+                            <asp:ImageButton ID="imgSelec" CommandName="Seleccionar" ImageUrl="~/img/calendar.png" Width="25px" runat="server" />
+                        </center>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
+            <EmptyDataTemplate>No hay datos por mostrar.</EmptyDataTemplate>
         </asp:GridView>
     </div>
 </asp:Content>

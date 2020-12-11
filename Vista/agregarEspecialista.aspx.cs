@@ -22,22 +22,35 @@ namespace Vista
             drpEspecialidad.DataValueField = "id_especialidad";
             drpEspecialidad.DataTextField = "especialidad1";
             drpEspecialidad.DataBind();
+
+            if (int.Parse(Session["idRol"].ToString()) == 2)
+            {
+                ClsEnteSalud ente = new ClsEnteSalud();
+                ddlEnte.DataSource = ente.EnteAsociado();
+                ddlEnte.DataValueField = "id_ente";
+                ddlEnte.DataTextField = "datos";
+                ddlEnte.DataBind();
+            }
         }
 
         protected void btnRegistarEspecialista_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
-            ClsEspecialista EspecialistaDAO = new ClsEspecialista();
-            Especialista Especialista = new Especialista();
-            Especialista.id_ente = EspecialistaDAO.idPersonaEnte(int.Parse(Session["idPersona"].ToString()));
-            Especialista.nombre = TextNombre.Text;
-            Especialista.correo = TextCorreo.Text;
-            Especialista.celular = TextCelular.Text;
-            Especialista.id_especialidad = int.Parse(drpEspecialidad.SelectedValue.ToString());
-            Especialista.id_ciudad = int.Parse(drpCiudad.SelectedValue.ToString());
-            Especialista.num_licencia = int.Parse(TextNumLicencia.Text);
-            Especialista.fech_expedicion_licen = DateTime.Parse(TextFechaE.Text);
-            EspecialistaDAO.Registrar(Especialista);
+            ClsEspecialista especialistaDAO = new ClsEspecialista();
+            Especialista especialista = new Especialista();
+            if (int.Parse(Session["idRol"].ToString()) == 2)
+            {
+                especialista.id_ente = int.Parse(ddlEnte.SelectedValue.ToString());
+            }
+            especialista.nombre = TextNombre.Text;
+            especialista.correo = TextCorreo.Text;
+            especialista.celular = TextCelular.Text;
+            especialista.id_especialidad = int.Parse(drpEspecialidad.SelectedValue.ToString());
+            especialista.id_ciudad = int.Parse(drpCiudad.SelectedValue.ToString());
+            especialista.num_licencia = int.Parse(TextNumLicencia.Text);
+            especialista.fech_expedicion_licen = DateTime.Parse(TextFechaE.Text);
+            mensaje = especialistaDAO.Registrar(especialista);
+            Page.RegisterStartupScript("script", "<script languaje=JavaScript>alert('" + mensaje + "');location.href='agregarEspecialista.aspx';</script>");
         }
     }
 }

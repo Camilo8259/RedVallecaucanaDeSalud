@@ -7,12 +7,12 @@ namespace Modelo
 {
     public class ClsEspecialista
     {
-        public string Registrar(Especialista especilista)
+        public string Registrar(Especialista especialista)
         {
             ORMDataContext BD = new ORMDataContext();
             try
             {
-                BD.Especialista.InsertOnSubmit(especilista);
+                BD.Especialista.InsertOnSubmit(especialista);
                 BD.SubmitChanges();
                 return "Registro exitoso";
             }

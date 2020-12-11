@@ -24,7 +24,7 @@ namespace Vista
             
             if (persona.cedula != 0)
             {
-                Session["idUsuario"] = persona.cedula;
+                Session["idPersona"] = persona.cedula;
                 Session["nombre"] = persona.nombre;
                 Session["apellido"] = persona.apellido;
                 Session["idRol"] = persona.id_rol;
@@ -50,5 +50,6 @@ namespace Vista
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('Documento o contraseña incorrectos');", true);
             }
         }
+
     }
 }

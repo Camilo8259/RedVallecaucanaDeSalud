@@ -53,8 +53,8 @@
             <div class="form-group">
                 <asp:Button ID="btnIngresar" runat="server" type="submit" class="btn btn-primary btn-block" text="Ingresar" OnClick="btnIngresar_Click"/>
             </div>
-            <div class="clearfix">
-                <p class="text-center"><a href="#">Registrarse</a></p>
+            <div class="text-center">
+                <asp:HyperLink ID="HRegistrarse" runat="server" NavigateUrl="~/agregarPersona.aspx" >Registrarse</asp:HyperLink>
             </div>
         </form>
     </div>

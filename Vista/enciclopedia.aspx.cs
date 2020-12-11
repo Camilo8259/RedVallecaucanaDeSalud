@@ -34,7 +34,8 @@ namespace Vista
             Enfermedad enfermedad = new Enfermedad();
             gdgGrid.DataSource = clsEnfermedad.ConsultarEnfermedad(DropDownEnfermedad.SelectedItem.Text, DropDownSintoma.SelectedItem.Text);
             gdgGrid.DataBind();
-            gdgGrid.HeaderRow.TableSection = TableRowSection.TableHeader; // Agrega etiqueta: <thead> a la tabla
+            if (gdgGrid.Rows.Count != 0)
+                gdgGrid.HeaderRow.TableSection = TableRowSection.TableHeader; // Agrega etiqueta: <thead> a la tabla
         }
     }
 }

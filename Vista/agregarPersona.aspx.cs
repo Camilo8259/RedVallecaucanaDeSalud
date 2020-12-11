@@ -12,27 +12,24 @@ namespace Vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            lblBienvenido.Text = "Bienvenido " + Session["nombre"] +" "+ Session["apellido"];
-            */
         }
 
         protected void btnRegistra_Click(object sender, EventArgs e)
         {
             string mensaje = string.Empty;
             ClsPersona clsPersona = new ClsPersona();
-            Persona Persona = new Persona();
-            Persona.nombre = TextNombre.Text;
-            Persona.apellido = TextApellido.Text;
-            Persona.correo = TextCorreo.Text;
-            Persona.celular = (TextCelular.Text);
-            Persona.cedula = int.Parse(TextCedula.Text);
-            Persona.password = textPassword.Text;
-            Persona.id_rol = 3;
-            mensaje = clsPersona.Registrar(Persona);
-            // Persona = new Persona();
-
-            Response.Redirect(Request.Url.AbsoluteUri);
+            Persona persona = new Persona();
+            persona.nombre = TextNombre.Text;
+            persona.apellido = TextApellido.Text;
+            persona.correo = TextCorreo.Text;
+            persona.celular = (TextCelular.Text);
+            persona.cedula = int.Parse(TextCedula.Text);
+            persona.password = textPassword.Text;
+            persona.id_rol = 3;
+            mensaje = clsPersona.Registrar(persona);
+            // persona = new persona();
+            Page.RegisterStartupScript("script", "<script languaje=JavaScript>alert('" + mensaje + "');location.href='agregarPersona.aspx';</script>");
+            //Response.Redirect(Request.Url.AbsoluteUri);
         }
 
         protected void textPassword_TextChanged(object sender, EventArgs e)
