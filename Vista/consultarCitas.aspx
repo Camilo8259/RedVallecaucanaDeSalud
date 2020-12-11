@@ -1,10 +1,23 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contenido.Master" AutoEventWireup="true" CodeBehind="consultarCitas.aspx.cs" Inherits="Vista.consultarCitas1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-    <!-- Estilos datatables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
+         <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Consultar citas</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -12,14 +25,20 @@
         if (int.Parse(Session["idRol"].ToString()) == 3)
         {
     %>
-    <h4 style="margin: 10px 15px 0px 0px"><i class="fas fa-star mr-2" style="color:orange"></i>Calificar citas</h4>
-
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header"><i></i>Calificar citas</h4>
+        </div>
+    </div>
     <%} %><%
         if (int.Parse(Session["idRol"].ToString()) == 1)
         {
     %>
-    <h4 style="margin: 10px 15px 0px 0px"><i class="far fa-calendar-alt mr-2"></i>Consultar citas</h4>
-
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header"><i></i>Consultar citas</h4>
+        </div>
+    </div>
     <%} %>
     <hr>
     <asp:Panel ID="PanelGrid" runat="server">

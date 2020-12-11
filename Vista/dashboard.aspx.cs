@@ -14,17 +14,6 @@ namespace Vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            lblEspe.Text = ClsEspecialista.CountEspecialistas().ToString();
-            if (int.Parse(Session["idRol"].ToString()) == 1)
-            {
-                lblCita.Text = ClsCita.CountCita().ToString();
-                lblEnte.Text = ClsEnteSalud.CountEste().ToString();
-            }
-            if (int.Parse(Session["idRol"].ToString()) == 2)
-                lblEnte.Text = ClsEnteSalud.CountEsteAsociado(int.Parse(Session["idPersona"].ToString())).ToString();
-            if (int.Parse(Session["idRol"].ToString()) == 3)
-                lblCita.Text = ClsCita.CountCitaSinCal(int.Parse(Session["idPersona"].ToString())).ToString();
-
 
 
             if (!IsPostBack)

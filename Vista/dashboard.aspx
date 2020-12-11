@@ -1,112 +1,35 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contenido.Master" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="Vista.dashboard" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <!-- Bootstrap 4 -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
-    <!-- Estilos datatables -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" />
-    <!-- select 2 -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+        <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="css/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Timeline CSS -->
+    <link href="css/timeline.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/startmin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="css/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <title>Inicio | Dashboard</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!-- Page Heading -->
-    <h5 class="text-center"><i class="fas fa-home mr-2"></i>Inicio</h5>
-
-    <div class="row justify-content-center">
-        <% if (int.Parse(Session["idRol"].ToString()) == 1)
-            { %>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-primary shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Cantidad de especialistas
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <asp:Label ID="lblEspe" runat="server"></asp:Label>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="fas fa-user-md fa-2x text-blue-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="page-header"><i></i>Inicio</h4>
         </div>
-        <%} %>
-        <% if (int.Parse(Session["idRol"].ToString()) == 1 || int.Parse(Session["idRol"].ToString()) == 2)
-            { %>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-success shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                Cantidad de entes de salud
-                                <% if (int.Parse(Session["idRol"].ToString()) == 2)
-                                    { %>
-                                 asignados
-                                <%} %>
-                            </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <asp:Label ID="lblEnte" runat="server"></asp:Label>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <i class="far fa-hospital fa-2x text-blue-300"></i>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <%} %>
-        <% if (int.Parse(Session["idRol"].ToString()) == 1 || int.Parse(Session["idRol"].ToString()) == 3)
-            { %>
-        <div class="col-xl-3 col-md-6 mb-4">
-            <div class="card border-left-info shadow h-100 py-2">
-                <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                <% if (int.Parse(Session["idRol"].ToString()) == 1)
-                                    { %>
-                                Citas atendidas
-                               
-                                <%} %>
-                                <% if (int.Parse(Session["idRol"].ToString()) == 3)
-                                    {%>
-                                Citas pendientes por calificar
-                                <%} %>
-                            </div>
-                            <div class="row no-gutters align-items-center">
-                                <div class="col-auto">
-                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        <asp:Label ID="lblCita" runat="server"></asp:Label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <% if (int.Parse(Session["idRol"].ToString()) == 1)
-                                { %>
-                            <i class="far fa-calendar-alt fa-2x text-blue-300"></i>
-                            <%} %>
-                            <% if (int.Parse(Session["idRol"].ToString()) == 3)
-                                { %>
-                            <i class="far fa-star fa-2x text-blue-300"></i>
-                            <%} %>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <% } %>
     </div>
     <hr>
-    <div class="row justify-content-center">
+    <div class="row">
         <% if (int.Parse(Session["idRol"].ToString()) == 1)
             { %>
         <h5>Entes de salud pendientes por asignar usuario de contenido</h5>
@@ -173,27 +96,20 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <!-- DataTables -->
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            // Cambiar idioma a español
-            $('.tabla').DataTable({
-                "language": {
-                    "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
-                }
-            });
-        });
-    </script>
-    <!-- select2 js -->
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.js-example-basic-single').select2({
-                placeholder: "Filtra",
-                language: "es"
-            });
-        });
-    </script>
+    <!-- jQuery -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="js/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="js/raphael.min.js"></script>
+    <script src="js/morris.min.js"></script>
+    <script src="js/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/js/startmin.js"></script>
 </asp:Content>
