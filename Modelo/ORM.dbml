@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="rvs" Class="ORMDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="ConnectionString" ConnectionString="Data Source=DESKTOP-7LAOATC\MSSQLSERVER01;Initial Catalog=rvs;Integrated Security=True" Provider="System.Data.SqlClient" />
+  <Connection Mode="ConnectionString" ConnectionString="Data Source=FAMILIA;Initial Catalog=rvs;Integrated Security=True" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Cita" Member="Cita">
     <Type Name="Cita">
       <Column Name="id_cita" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -128,7 +128,7 @@
   </Table>
   <Function Name="dbo.sp_login" Method="sp_login">
     <Parameter Name="cedula" Type="System.Int32" DbType="Int" />
-    <Parameter Name="contrasenia" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="password" Type="System.String" DbType="VarChar(50)" />
     <ElementType Name="sp_loginResult">
       <Column Name="id_persona" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="id_rol" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />

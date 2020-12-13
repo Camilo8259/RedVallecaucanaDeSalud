@@ -20,7 +20,7 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">    <title>Especialidades</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <h4 class="page-header"><i></i>Consultar especialistas</h4>
         </div>
@@ -29,7 +29,8 @@
     <div class="col-12 table-responsive-md mt-3 mb-3">
         <asp:GridView Width="100%" CellSpacing="0" class="table table-bordered table-hover tabla" ID="gdgGrid" runat="server" AutoGenerateColumns="False" OnRowDataBound="gdgGrid_RowDataBound" OnRowCommand="gdgGrid_RowCommand">
             <Columns>
-                <asp:BoundField DataField="id" HeaderText="Id" />
+                <asp:BoundField DataField="id" HeaderText="Id"/>
+                <asp:BoundField DataField="licencia" HeaderText="Nº Licencia"/>
                 <asp:BoundField DataField="nombre" HeaderText="Nombre" />
                 <asp:BoundField DataField="ente" HeaderText="Ente de salud" />
                 <asp:BoundField DataField="correo" HeaderText="Correo" />

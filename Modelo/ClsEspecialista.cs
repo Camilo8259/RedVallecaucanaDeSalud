@@ -37,6 +37,7 @@ namespace Modelo
                    select new
                    {
                        id = e.id_especialista,
+                       licencia = e.num_licencia,
                        nombre = e.nombre,
                        ente = e.Ente_salud.razon_social,
                        correo = e.correo,

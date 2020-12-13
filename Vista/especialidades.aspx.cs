@@ -29,7 +29,13 @@ namespace Vista
             if (e.CommandName == "Seleccionar")
             {
                 Session["idEspecialista"] = gdgGrid.Rows[rowIndex].Cells[0].Text;
-                Session["nombreEspecialista"] = gdgGrid.Rows[rowIndex].Cells[1].Text;
+                Session["licencia"] = gdgGrid.Rows[rowIndex].Cells[1].Text;
+                Session["nombreEspecialista"] = gdgGrid.Rows[rowIndex].Cells[2].Text;
+                Session["enteSalud"] = gdgGrid.Rows[rowIndex].Cells[3].Text;
+                Session["correo"] = gdgGrid.Rows[rowIndex].Cells[4].Text;
+                Session["celular"] = gdgGrid.Rows[rowIndex].Cells[5].Text;
+                Session["especialidad"] = gdgGrid.Rows[rowIndex].Cells[6].Text;
+                Session["ciudad"] = gdgGrid.Rows[rowIndex].Cells[7].Text;
                 Server.Transfer("crearCita.aspx");
             }
         }

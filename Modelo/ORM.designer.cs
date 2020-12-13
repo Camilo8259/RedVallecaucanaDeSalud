@@ -69,8 +69,7 @@ namespace Modelo
     #endregion
 		
 		public ORMDataContext() : 
-				base("Data Source=DESKTOP-7LAOATC\\MSSQLSERVER01;Initial Catalog=rvs;Integrated Security" +
-						"=True", mappingSource)
+				base("Data Source=FAMILIA;Initial Catalog=rvs;Integrated Security=True", mappingSource)
 		{
 			OnCreated();
 		}
@@ -196,9 +195,9 @@ namespace Modelo
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_login")]
-		public ISingleResult<sp_loginResult> sp_login([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string contrasenia)
+		public ISingleResult<sp_loginResult> sp_login([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cedula, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(50)")] string password)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, contrasenia);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cedula, password);
 			return ((ISingleResult<sp_loginResult>)(result.ReturnValue));
 		}
 	}
