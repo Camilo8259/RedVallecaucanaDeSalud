@@ -70,6 +70,7 @@
     <Content Include="agregarEnte.aspx" />
     <Content Include="agregarEspecialista.aspx" />
     <Content Include="agregarPersona.aspx" />
+    <Content Include="calificarCita.aspx" />
     <Content Include="consultarCitas.aspx" />
     <Content Include="crearCita.aspx" />
     <Content Include="dashboard.aspx" />
@@ -99,6 +100,13 @@
     </Compile>
     <Compile Include="agregarPersona.aspx.designer.cs">
       <DependentUpon>agregarPersona.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="calificarCita.aspx.cs">
+      <DependentUpon>calificarCita.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="calificarCita.aspx.designer.cs">
+      <DependentUpon>calificarCita.aspx</DependentUpon>
     </Compile>
     <Compile Include="consultarCitas.aspx.cs">
       <DependentUpon>consultarCitas.aspx</DependentUpon>
