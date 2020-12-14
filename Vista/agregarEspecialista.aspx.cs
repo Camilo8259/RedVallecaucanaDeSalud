@@ -11,25 +11,28 @@ namespace Vista
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            ClsCiudad ciudadDAO = new ClsCiudad();
-            drpCiudad.DataSource = ciudadDAO.consularTodo();
-            drpCiudad.DataValueField = "id_Ciudad";
-            drpCiudad.DataTextField = "ciudad1";
-            drpCiudad.DataBind();
-
-            ClsEspecialidad especialidadDAO = new ClsEspecialidad();
-            drpEspecialidad.DataSource = especialidadDAO.consultarTodos();
-            drpEspecialidad.DataValueField = "id_especialidad";
-            drpEspecialidad.DataTextField = "especialidad1";
-            drpEspecialidad.DataBind();
-
-            if (int.Parse(Session["idRol"].ToString()) == 2)
+            if (!IsPostBack)
             {
-                ClsEnteSalud ente = new ClsEnteSalud();
-                ddlEnte.DataSource = ente.EnteAsociado();
-                ddlEnte.DataValueField = "id_ente";
-                ddlEnte.DataTextField = "datos";
-                ddlEnte.DataBind();
+                ClsCiudad ciudadDAO = new ClsCiudad();
+                drpCiudad.DataSource = ciudadDAO.consularTodo();
+                drpCiudad.DataValueField = "id_Ciudad";
+                drpCiudad.DataTextField = "ciudad1";
+                drpCiudad.DataBind();
+
+                ClsEspecialidad especialidadDAO = new ClsEspecialidad();
+                drpEspecialidad.DataSource = especialidadDAO.consultarTodos();
+                drpEspecialidad.DataValueField = "id_especialidad";
+                drpEspecialidad.DataTextField = "especialidad1";
+                drpEspecialidad.DataBind();
+
+                if (int.Parse(Session["idRol"].ToString()) == 2)
+                {
+                    ClsEnteSalud ente = new ClsEnteSalud();
+                    ddlEnte.DataSource = ente.EnteAsociado();
+                    ddlEnte.DataValueField = "id_ente";
+                    ddlEnte.DataTextField = "datos";
+                    ddlEnte.DataBind();
+                }
             }
         }
 

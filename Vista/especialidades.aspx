@@ -17,7 +17,9 @@
     <link href="css/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">    <title>Especialidades</title>
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">    
+    
+    <title>Especialidades</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
@@ -51,24 +53,21 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
-    <!-- bootstrap, popper y jquery -->
-    <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-    <!-- Datatables -->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.js"></script>
-    <script src="js/dataTables/datatables.min.js"></script>
-    <!-- searchPanes -->
-    <script src="https://cdn.datatables.net/searchpanes/1.0.1/js/dataTables.searchPanes.min.js"></script>
-    <!-- select -->
-    <script src="https://cdn.datatables.net/select/1.3.1/js/dataTables.select.min.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Cambiar idioma a español
+            $('.tabla').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+                }
+            });
+        });
+    </script>
 
-
-    <!-- Botones datatable -->
-    <script src="js/dataTables/dataTables.buttons.min.js"></script>
-    <script src="js/dataTables/jszip.min.js"></script>
-    <script src="js/dataTables/pdfmake.min.js"></script>
-    <script src="js/dataTables/vfs_fonts.js"></script>
-    <script src="js/dataTables/buttons.html5.min.js"></script>
-    <script src="js/dataTables/exportar_tablas.js"></script>
 </asp:Content>
 
 

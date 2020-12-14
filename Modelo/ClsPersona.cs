@@ -32,6 +32,7 @@ namespace Modelo
             foreach (var item in PersonaLogin)
             {
                 persona.cedula = item.cedula;
+                persona.id_persona = item.id_persona;
                 persona.id_rol = item.id_rol;
                 persona.cedula = item.cedula;
                 persona.nombre = item.nombre;

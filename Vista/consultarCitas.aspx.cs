@@ -17,15 +17,23 @@ namespace Vista
                 ClsCita clsCita = new ClsCita();
                 if (int.Parse(Session["idRol"].ToString()) == 3)
                 {
-                    gdgGrid.DataSource = clsCita.ConsultarCita(int.Parse(Session["idPersona"].ToString()), "Reservada");
+                    gdgGrid.DataSource = clsCita.ConsultarCita(int.Parse(Session["idPac"].ToString()), "Reservada");
                 }
                 else
                 {
-                    gdgGrid.DataSource = clsCita.AllConsulCita();
+                    gdgGrid1.DataSource = clsCita.AllConsulCita();
                 }
                 gdgGrid.DataBind();
+                gdgGrid1.DataBind();
                 if (gdgGrid.Rows.Count != 0)
+                {
                     gdgGrid.HeaderRow.TableSection = TableRowSection.TableHeader; // Agrega etiqueta: <thead> a la tabla
+                }
+                    
+                if (gdgGrid1.Rows.Count != 0)
+                {
+                    gdgGrid1.HeaderRow.TableSection = TableRowSection.TableHeader;
+                }
             }
 
         }
@@ -34,59 +42,62 @@ namespace Vista
         {
             GridViewRow filaSeleccionada = (GridViewRow)((Control)e.CommandSource).NamingContainer;
             int rowIndex = filaSeleccionada.RowIndex;
-            if (e.CommandName == "Calificar")
+            if (e.CommandName == "Calificar" || Session["estado"].ToString() == "Finalizada")
             {
-                DropDownList ddlList = (DropDownList)filaSeleccionada.FindControl("ddlCalificar");
-                int calificacion = int.Parse(ddlList.SelectedValue.ToString());
-                int id_cita = int.Parse(gdgGrid.Rows[rowIndex].Cells[0].Text);
-                ClsCita clsCita = new ClsCita();
-                clsCita.CalificarCita(calificacion, id_cita);
-                Page.RegisterStartupScript("script", "<script languaje=JavaScript>alert('Calificación exitosa.');location.href='dashboard.aspx';</script>");
+                Session["idCita"] = gdgGrid.Rows[rowIndex].Cells[0].Text;
+                Session["nombre"] = gdgGrid.Rows[rowIndex].Cells[1].Text;
+                Session["fechaCita"] = gdgGrid.Rows[rowIndex].Cells[2].Text;
+                Session["enteSalud"] = gdgGrid.Rows[rowIndex].Cells[3].Text;
+                Session["idHora"] = gdgGrid.Rows[rowIndex].Cells[4].Text;
+                Session["nombreEspecialista"] = gdgGrid.Rows[rowIndex].Cells[5].Text;
+                Session["nombreEspecialidad"] = gdgGrid.Rows[rowIndex].Cells[6].Text;
+                Session["estado"] = gdgGrid.Rows[rowIndex].Cells[7].Text;
+                Server.Transfer("calificarCita.aspx");
+            }
+            else
+            {
+                Page.RegisterStartupScript("script", "<script languaje=JavaScript>alert('Cita ya calificada');location.href='dashboard.aspx';</script>");
+            }
+
+        }
+        protected void gdgGrid1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            GridViewRow filaSeleccionada = (GridViewRow)((Control)e.CommandSource).NamingContainer;
+            int rowIndex = filaSeleccionada.RowIndex;
+            if (e.CommandName == "Calificar" || Session["estado"].ToString() == "Finalizada")
+            {
+                Session["idCita"] = gdgGrid1.Rows[rowIndex].Cells[0].Text;
+                Session["nombre"] = gdgGrid1.Rows[rowIndex].Cells[1].Text;
+                Session["fechaCita"] = gdgGrid1.Rows[rowIndex].Cells[2].Text;
+                Session["enteSalud"] = gdgGrid1.Rows[rowIndex].Cells[3].Text;
+                Session["idHora"] = gdgGrid1.Rows[rowIndex].Cells[4].Text;
+                Session["nombreEspecialista"] = gdgGrid1.Rows[rowIndex].Cells[5].Text;
+                Session["nombreEspecialidad"] = gdgGrid1.Rows[rowIndex].Cells[6].Text;
+                Session["estado"] = gdgGrid1.Rows[rowIndex].Cells[7].Text;
+                Server.Transfer("calificarCita.aspx");
+            }
+            else
+            {
+                Page.RegisterStartupScript("script", "<script languaje=JavaScript>alert('Cita ya calificada');location.href='dashboard.aspx';</script>");
             }
 
         }
 
         protected void gdgGrid_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (int.Parse(Session["idRol"].ToString()) != 3)
-            {
-                if (e.Row.RowType == DataControlRowType.Header)
-                {
-                    e.Row.Cells[7].Visible = false;
-                    e.Row.Cells[8].Visible = false;
-                }
-                if (e.Row.RowType == DataControlRowType.DataRow)
-                {
-                    e.Row.Cells[7].Visible = false;
-                    e.Row.Cells[8].Visible = false;
-                }
-            }
-            else
-            {
-                if (!IsPostBack)
-                {
-                    if (e.Row.RowType == DataControlRowType.DataRow && e.Row.DataItem != null)
-                    {
-                        DropDownList ddlList = new DropDownList();
-                        ddlList = (DropDownList)e.Row.FindControl("ddlCalificar");
-                        ListItem i;
-                        i = new ListItem("★", "1");
-                        ddlList.Items.Add(i);
-                        i = new ListItem("★★", "2");
-                        ddlList.Items.Add(i);
-                        i = new ListItem("★★★", "3");
-                        ddlList.Items.Add(i);
-                        i = new ListItem("★★★★", "4");
-                        ddlList.Items.Add(i);
-                        i = new ListItem("★★★★★", "5");
-                        ddlList.Items.Add(i);
-                    }
-                }
-            }
+
+        }
+        protected void gdgGrid1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+
         }
 
 
         protected void gdgGrid_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void gdgGrid1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

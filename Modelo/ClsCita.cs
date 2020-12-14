@@ -29,8 +29,9 @@ namespace Modelo
                    where c.estado == estado && c.id_persona == idPersona
                    select new
                    {
-                       id_Cita = c.id_cita,
-                       fecha_Cita = c.fecha_cita.ToShortDateString(),
+                       id_cita = c.id_cita,
+                       nombre = c.Persona.nombre,
+                       fecha_cita = c.fecha_cita.ToShortDateString(),
                        id_hora = c.Hora_cita.hora,
                        especialista = c.Especialista.nombre,
                        especialidad = c.Especialista.Especialidad.especialidad1,
@@ -45,8 +46,9 @@ namespace Modelo
             return from c in BD.Cita
                    select new
                    {
-                       id_Cita = c.id_cita,
-                       fecha_Cita = c.fecha_cita.ToShortDateString(),
+                       id_cita = c.id_cita,
+                       nombre = c.Persona.nombre + " " + c.Persona.apellido,
+                       fecha_cita = c.fecha_cita.ToShortDateString(),
                        id_hora = c.Hora_cita.hora,
                        especialista = c.Especialista.nombre,
                        especialidad = c.Especialista.Especialidad.especialidad1,
@@ -62,8 +64,8 @@ namespace Modelo
                    where c.id_persona == id
                    select new
                    {
-                       id_Cita = c.id_cita,
-                       fecha_Cita = c.fecha_cita.ToShortDateString(),
+                       id_cita = c.id_cita,
+                       fecha_cita = c.fecha_cita.ToShortDateString(),
                        id_hora = c.Hora_cita.hora,
                        especialista = c.Especialista.nombre,
                        especialidad = c.Especialista.Especialidad.especialidad1,
@@ -73,11 +75,11 @@ namespace Modelo
         }
 
 
-        public List<Cita> CitaReservada(DateTime fecha)
+        public List<Cita> citaReservada(DateTime fecha)
         {
             ORMDataContext BD = new ORMDataContext();
             return (from c in BD.Cita
-                    where c.estado.Equals("Reservada") && c.fecha_cita == fecha
+                    where (c.estado.Equals("Reservada") || c.estado.Equals("Finalizada")) && c.fecha_cita == fecha
                     select c).ToList();
         }
         public Object consularHora()
@@ -105,11 +107,11 @@ namespace Modelo
         public void CalificarCita(int calificacion, int id)
         {
             ORMDataContext BD = new ORMDataContext();
-            var CitaCalificada = (from c in BD.Cita
+            var citaCalificada = (from c in BD.Cita
                                   where c.id_cita == id
                                   select c).First();
-            CitaCalificada.calificacion = calificacion;
-            CitaCalificada.estado = "Atendido";
+            citaCalificada.calificacion = calificacion;
+            citaCalificada.estado = "Finalizada";
             BD.SubmitChanges();
         }
 

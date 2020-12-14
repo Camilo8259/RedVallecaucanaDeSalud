@@ -28,6 +28,7 @@ namespace Vista
                 Session["nombre"] = persona.nombre;
                 Session["apellido"] = persona.apellido;
                 Session["idRol"] = persona.id_rol;
+                Session["idPac"] = persona.id_persona;
                 Session["rol"] = clsRol.Rol(persona.id_rol);
 
                 //if (persona.id_rol == 1)

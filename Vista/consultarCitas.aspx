@@ -30,7 +30,32 @@
             <h4 class="page-header"><i></i>Calificar citas</h4>
         </div>
     </div>
-    <%} %><%
+        <hr>
+    <asp:Panel ID="Panel1" runat="server">
+
+        <asp:GridView Width="100%" CellSpacing="0" class="table table-bordered table-hover tabla" ID="gdgGrid" runat="server" AutoGenerateColumns="False" OnRowCommand="gdgGrid_RowCommand" OnRowDataBound="gdgGrid_RowDataBound" OnSelectedIndexChanged="gdgGrid_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="id_cita" HeaderText="Id cita" />
+                <asp:BoundField DataField="nombre" HeaderText="Persona atendida:" />
+                <asp:BoundField DataField="fecha_cita" HeaderText="Fecha" />
+                <asp:BoundField DataField="id_hora" HeaderText="Hora" />
+                <asp:BoundField DataField="especialista" HeaderText="Atendido por:" />
+                <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />
+                <asp:BoundField DataField="calificacion" HeaderText="Calificación" />
+                <asp:BoundField DataField="estado" HeaderText="Estado" />
+                <asp:TemplateField HeaderText="Calificar">
+                    <ItemTemplate>
+                        <asp:Button CssClass="btn btn-success" CommandName="Calificar" ID="bntCalificar" runat="server" Text="Calificar" />
+                    </ItemTemplate>
+                </asp:TemplateField>
+
+            </Columns>
+            <EmptyDataTemplate>No hay datos por mostrar.</EmptyDataTemplate>
+        </asp:GridView>
+
+    </asp:Panel>
+    <%}%>
+    <%
         if (int.Parse(Session["idRol"].ToString()) == 1)
         {
     %>
@@ -39,35 +64,25 @@
             <h4 class="page-header"><i></i>Consultar citas</h4>
         </div>
     </div>
-    <%} %>
-    <hr>
-    <asp:Panel ID="PanelGrid" runat="server">
-        <asp:GridView Width="100%" CellSpacing="0" class="table table-bordered table-hover tabla" ID="gdgGrid" runat="server" AutoGenerateColumns="False" OnRowCommand="gdgGrid_RowCommand" OnRowDataBound="gdgGrid_RowDataBound" OnSelectedIndexChanged="gdgGrid_SelectedIndexChanged">
+        <hr>
+    <asp:Panel ID="Panel2" runat="server">
+
+        <asp:GridView Width="100%" CellSpacing="0" class="table table-bordered table-hover tabla" ID="gdgGrid1" runat="server" AutoGenerateColumns="False" OnRowCommand="gdgGrid1_RowCommand" OnRowDataBound="gdgGrid1_RowDataBound" OnSelectedIndexChanged="gdgGrid1_SelectedIndexChanged">
             <Columns>
                 <asp:BoundField DataField="id_cita" HeaderText="Id cita" />
+                <asp:BoundField DataField="nombre" HeaderText="Persona atendida:" />
                 <asp:BoundField DataField="fecha_cita" HeaderText="Fecha" />
                 <asp:BoundField DataField="id_hora" HeaderText="Hora" />
                 <asp:BoundField DataField="especialista" HeaderText="Atendido por:" />
                 <asp:BoundField DataField="especialidad" HeaderText="Especialidad" />
                 <asp:BoundField DataField="calificacion" HeaderText="Calificación" />
                 <asp:BoundField DataField="estado" HeaderText="Estado" />
-
-                <asp:TemplateField HeaderText="Calificación">
-                    <ItemTemplate>
-                        <asp:DropDownList class="js-example-basic-single form-control" ID="ddlCalificar" runat="server"></asp:DropDownList>
-                    </ItemTemplate>
-                </asp:TemplateField>
-                <asp:TemplateField HeaderText="Calificar">
-                    <ItemTemplate>
-                        <asp:Button CssClass="btn btn-success" CommandName="Calificar" ID="bntCalificar" runat="server" Text="Calificar" />
-                    </ItemTemplate>
-                </asp:TemplateField>
             </Columns>
             <EmptyDataTemplate>No hay datos por mostrar.</EmptyDataTemplate>
         </asp:GridView>
 
     </asp:Panel>
-
+    <%}%>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">
     <!-- DataTables -->

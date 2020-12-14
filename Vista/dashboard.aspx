@@ -76,7 +76,7 @@
         </asp:GridView>
         <%} %>
         <% if (int.Parse(Session["idRol"].ToString()) == 3)
-            { %>
+            {%>
         <div class="col-12">
             <h5 class="text-center">Historico de citas.</h5>
         </div>
@@ -92,7 +92,7 @@
             </Columns>
             <EmptyDataTemplate>No hay datos por mostrar.</EmptyDataTemplate>
         </asp:GridView>
-        <%} %>
+        <%}%>
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="footer" runat="server">

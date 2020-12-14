@@ -31,8 +31,7 @@
         <div class="col-4" style="border-right: 1px solid rgba(0,0,0,.1);">
             <br />
             <label>Datos del especialista</label>
-            <br />
-            <asp:Label ID="lblid" runat="server"></asp:Label>
+
             <br />
             <asp:Label ID="lblnombreE" runat="server"></asp:Label>
             <br />
@@ -56,8 +55,6 @@
                 <asp:DropDownList class="form-control" ID="DropDownListHora" runat="server" OnSelectedIndexChanged="DropDownList_SelectedIndexChanged">
                 </asp:DropDownList>
             </div>
-
-
             <div class="form-group col-md-4">
                 <label>Fecha:</label>
                 <asp:TextBox class="form-control" ID="txtFecha" runat="server" type="date">
